@@ -17,94 +17,30 @@
         <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
 
         <!-- Titre affiché en haut du navigateur et de l'onglet -->
-        <title>Titre de la page MODIFIEE !</title>
+        <title>Capybara Rouge</title>
 </head>
 
 <body>
         <main class="slides">
-                <button class="btn_left"><img src="images/bouton_gauche.png" alt=""></button>
-                <button class="btn_right"><img src="images/bouton_droite.png" alt=""></button>
-                <div class="slider">
-                        <!-- Ajoutez vos images ici selon ce modèle.
-                             La première doit avoir class="active".
-                             La première doit avoir son chemin écrit src="..." et non data-src="...".
-                             Cela permet de ne pas charger toutes les images d'un coup
-                             Et donc d'afficher la page plus vite.
-                             Déposez vos images dans le dossier "images" -->
-                        <img src="images/image_1.jpg" class="active">
-                        <img data-legende="Couverture d'un livre" data-src="images/image_2.jpg">
-                        <img data-src="images/image_3.jpg">
-                </div>
+                
+                <iframe
+                width="100%"
+                height="100%"
+                src="https://www.youtube.com/embed/QUqCWkPlLLc?version=3&loop=1&playlist=QUqCWkPlLLc& rel=0&modestbranding=1&autohide=1&mute=1&showinfo=0&controls=0&autoplay=1"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen></iframe>
+                
         </main>
 
         <div class="carte_visite">
-                <h1>Nom de l'étudiant</h1>
-                <h2>2ème année à l'ENSAD Nancy</h2>
-                <p><a href="mailto:mon_mail@machin.com">mon_mail@machin.com</a><br>
-                        <!-- Déposez les fichiers "pdf_desktop" et "pdf_mobile" dans le dossier racine. Si vous les renommez, adaptez la valeur href="..." ci-dessous -->
-                        <a target="_blank" class="lien_desktop" href="pdf_desktop.pdf"><img src="images/icon_link.png"
-                                        alt=""> Télécharger mes travaux</a>
-                        <a target="_blank" class="lien_mobile" href="pdf_mobile.pdf"><img src="images/icon_link.png"
-                                        alt=""> Télécharger mes travaux</a>
-                </p>
+                <h1>Capybara Rouge</h1>
+                <h2>Hibernation saisonnière - de la classe et des puces</h2>
+                <p><a href="mailto:contact@capybara-rouge.me">contact@capybara-rouge.me</a></p>
         </div>
 
 </body>
 <script>
-        /* Ce script génère le caroussel de fond. Ne pas toucher (quoique! (-; ) */
-        (function () {
-                /* On sélectionne les différents éléments */
-                var left_btn = document.querySelector('.btn_left');
-                var right_btn = document.querySelector('.btn_right');
-                var slider = document.querySelector('.slider');
-                var slides = Array.from(document.querySelectorAll('.slider img'));
-                /* Nombre de slides */
-                var len = slides.length;
-                /* Slide courante */
-                var index = 0;
-
-                /* Fonction qui change l'image : on enlève la classe "active"
-                à toutes les images, et on la met uniquement sur l'image pertinente. */
-                function slide(target) {
-                        slides.forEach(function (slide) {
-                                slide.classList.remove('active');
-                        });
-                        target.classList.add('active');
-                        target.classList.add('loaded');
-                }
-
-                /* Fonction pour déclencher le changement d'image. */
-                function move(delta) {
-                        /* On détermine si on va vers la gauche ou la droite, et en conséquence,
-                        si l'on doit boucler ou non */
-                        if (delta < 0) {
-                                index = index === 0 ? len - 1 : index - 1;
-                        } else {
-                                index = index === len - 1 ? 0 : index + 1;
-                        }
-
-                        /* On récupère l'image concernée */
-                        var to_activate = slides[index];
-                        /* Si elle n'a pas encore été chargée */
-                        if (!to_activate.getAttribute('src')) {
-                                /* On déclenche son chargement, et seulement lorsqu'elle est chargée,
-                                on y défile. */
-                                to_activate.setAttribute('src', to_activate.getAttribute('data-src'));
-                                to_activate.addEventListener('load', function () {
-                                        slide(to_activate);
-                                });
-                        } else {
-                                /* Sinon, on défile directement */
-                                slide(to_activate);
-                        }
-                }
-                left_btn.addEventListener('click', function () {
-                        move(-1);
-                });
-                right_btn.addEventListener('click', function () {
-                        move(1);
-                });
-        })();
 </script>
 
 </html>
